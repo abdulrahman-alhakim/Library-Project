@@ -18,11 +18,11 @@ export const SearchBooksPage = () => {
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const baseUrl: string = "http://localhost:8080/api/books";
+      const baseUrl: string = `${process.env.REACT_APP_API}/books`;
 
-      let url: string = "";
+      let url: string = '';
 
-      if (searchUrl === "") {
+      if (searchUrl === '') {
         url = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
       } else {
         let searchWithPage = searchUrl.replace(

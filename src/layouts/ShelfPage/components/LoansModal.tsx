@@ -49,8 +49,7 @@ export const LoansModal: React.FC<{ shelfCurrentLoan: ShelfCurrentLoans, mobile:
                                         </p>
                                     }
                                     <div className='list-group mt-3'>
-                                        <button 
-                                            onClick={()=> props.returnBook(props.shelfCurrentLoan.book.id)} 
+                                    <button onClick={() => props.returnBook(props.shelfCurrentLoan.book.id)} 
                                            data-bs-dismiss='modal' className='list-group-item list-group-item-action' 
                                            aria-current='true'>
                                             Return Book

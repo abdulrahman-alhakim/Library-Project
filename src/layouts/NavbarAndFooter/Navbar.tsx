@@ -10,7 +10,7 @@ export const Navbar = () => {
     return <SpinnerLoading />;
   }
 
-  const handleLogout = async() => oktaAuth.signOut();
+  const handleLogout = async () => oktaAuth.signOut();
 
   console.log(authState);
 
@@ -41,29 +41,39 @@ export const Navbar = () => {
                 Search Books
               </NavLink>
             </li>
-            {authState.isAuthenticated && 
+            {authState.isAuthenticated && (
               <li className="nav-item">
-                <NavLink className="nav-link" to="/shelf">Shelf</NavLink>
+                <NavLink className="nav-link" to="/shelf">
+                  Shelf
+                </NavLink>
               </li>
-            }
-            {
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/admin">Admin</NavLink>
-              </li>
-            }
+            )}
+            {authState.isAuthenticated &&
+              authState.accessToken?.claims?.userType === "admin" && (
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/admin">
+                    Admin
+                  </NavLink>
+                </li>
+              )}
           </ul>
           <ul className="navbar-nav ms-auto">
             {!authState.isAuthenticated ? (
               <li className="nav-item m-1">
-                <Link className="btn btn-outline-light" to="/login" type="button">
+                <Link
+                  className="btn btn-outline-light"
+                  to="/login"
+                  type="button"
+                >
                   Sign In
                 </Link>
               </li>
             ) : (
               <li>
-                <button 
-                    className="btn btn-outline-light" 
-                    onClick={handleLogout}>
+                <button
+                  className="btn btn-outline-light"
+                  onClick={handleLogout}
+                >
                   Log Out
                 </button>
               </li>
